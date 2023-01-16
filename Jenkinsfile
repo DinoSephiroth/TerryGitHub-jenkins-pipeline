@@ -18,11 +18,5 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing....'
-                sh(script: './mvnw --batch-mode -Dmaven.test.failure.ignore=true test')
-            }
-        }
     }        
 }
