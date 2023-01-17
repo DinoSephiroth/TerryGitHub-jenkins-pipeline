@@ -46,20 +46,21 @@ pipeline {
       }
     }
     
+       stage("Publish NUnit Test Report") {
+        steps {
+            nunit testResultsPattern: 'TestResult.xml'
+        }
+    }
+    
   }
-  post {
-    always {
+  //post {
+    //always {
       // pmd(canRunOnFailed: true,pattern: '**/target/pwd.xml')
       // The testDataPublishers argument allows failed tests to be claimed
       // junit(testDataPublishers: [[$class: 'ClaimTestDataPublisher']], testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true) 
       // junit 'build/reports/**/*.xml'
-      junit(testResults: 'build/reports/**/*.xml', allowEmptyResults : true) 
-      
-       stage("Publish NUnit Test Report") {
-            steps {
-                nunit testResultsPattern: 'TestResult.xml'
-            }
-        }
-    }
-  }
+      //junit(testResults: 'build/reports/**/*.xml', allowEmptyResults : true)       
+    //}
+  //}
+  
 }
