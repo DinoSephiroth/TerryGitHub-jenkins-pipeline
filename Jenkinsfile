@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        echo 'Testing..'
+        echo 'Testing.. GitLab Trigger!'
         //sh(script: './mvnw --batch-mode -Dmaven.test.failure.ignore=true test')               
       }
     }
