@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        //sh(script: './mvnw --batch-mode package -DskipTests')
+        sh(script: './mvnw --batch-mode package -DskipTests')
       }
     }    
     stage("Publish NUnit Test Report") {
