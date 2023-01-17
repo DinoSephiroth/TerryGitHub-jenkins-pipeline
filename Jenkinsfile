@@ -5,10 +5,10 @@ pipeline {
   // * JUnit: https://plugins.jenkins.io/junit/
   // * Claim: https://plugins.jenkins.io/claim/
   agent 'any'
-  options{
-    // This option allows broken builds to be claimed
+  //options{
+    //// This option allows broken builds to be claimed
     //allowBrokenBuildClaiming()
-  }
+  //}
   stages {
     stage('Checkout') {
       steps {
