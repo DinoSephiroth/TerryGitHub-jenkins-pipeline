@@ -41,6 +41,12 @@ pipeline {
       // junit(testDataPublishers: [[$class: 'ClaimTestDataPublisher']], testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true) 
       // junit 'build/reports/**/*.xml'
       junit(testResults: 'build/reports/**/*.xml', allowEmptyResults : true) 
+      
+       stage("Publish NUnit Test Report") {
+            steps {
+                nunit testResultsPattern: 'TestResult.xml'
+            }
+        }
     }
   }
 }
