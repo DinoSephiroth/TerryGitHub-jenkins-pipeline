@@ -40,7 +40,7 @@ pipeline {
       // The testDataPublishers argument allows failed tests to be claimed
       // junit(testDataPublishers: [[$class: 'ClaimTestDataPublisher']], testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true) 
       // junit 'build/reports/**/*.xml'
-      junit(testDataPublishers: testResults: 'build/reports/**/*.xml', allowEmptyResults : true) 
+      junit(testResults: 'build/reports/**/*.xml', allowEmptyResults : true) 
     }
   }
 }
