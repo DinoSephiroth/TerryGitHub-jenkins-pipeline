@@ -7,7 +7,7 @@ pipeline {
   agent 'any'
   
   tools {
-    maven 'mvn-3.5.4
+    maven 'mvn-3.5.4'
     }
   
   //options{
