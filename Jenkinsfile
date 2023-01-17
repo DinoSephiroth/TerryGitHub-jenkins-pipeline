@@ -13,7 +13,7 @@ pipeline {
     stage('Checkout') {
       steps {
         script {
-            checkout([$class: 'GitSCM', branches: [[name: '*/failing-test']], userRemoteConfigs: [[url: 'https://github.com/OctopusSamples/RandomQuotes-Java.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/failing-test']], userRemoteConfigs: [[url: 'https://github.com/DinoSephiroth/TerryGitHub-jenkins-pipeline.git']]])
         }
       }
     }
