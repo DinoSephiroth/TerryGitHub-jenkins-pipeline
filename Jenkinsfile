@@ -16,20 +16,20 @@ pipeline {
   //}
   
   stages {
-    stage('Checkout') {
+    stage('Build') {
       steps {
-        script {
-            checkout([$class: 'GitSCM', branches: [[name: '*/failing-test']], userRemoteConfigs: [[url: 'https://github.com/DinoSephiroth/TerryGitHub-jenkins-pipeline.git']]])
-        }
+        echo 'Building..'
       }
     }
     stage('Test') {
       steps {
-        sh(script: './mvnw --batch-mode -Dmaven.test.failure.ignore=true test')
+        echo 'Testing..'
+        sh(script: './mvnw --batch-mode -Dmaven.test.failure.ignore=true test')               
       }
     }
-    stage('Package') {
+    stage('Deploy') {
       steps {
+        echo 'Deploying....'
         sh(script: './mvnw --batch-mode package -DskipTests')
       }
     }    
@@ -38,16 +38,5 @@ pipeline {
         nunit testResultsPattern: 'TestResult.xml'
         }
     }
-    
   }
-  //post {
-    //always {
-      // pmd(canRunOnFailed: true,pattern: '**/target/pwd.xml')
-      // The testDataPublishers argument allows failed tests to be claimed
-      // junit(testDataPublishers: [[$class: 'ClaimTestDataPublisher']], testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true) 
-      // junit 'build/reports/**/*.xml'
-      //junit(testResults: 'build/reports/**/*.xml', allowEmptyResults : true)       
-    //}
-  //}
-  
 }
