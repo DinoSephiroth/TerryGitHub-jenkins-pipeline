@@ -7,7 +7,7 @@ pipeline {
   agent 'any'
   options{
     // This option allows broken builds to be claimed
-    allowBrokenBuildClaiming()
+    //allowBrokenBuildClaiming()
   }
   stages {
     stage('Checkout') {
