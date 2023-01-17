@@ -33,6 +33,19 @@ pipeline {
         sh(script: './mvnw --batch-mode package -DskipTests')
       }
     }
+    
+        stage('Integration') {
+      junit 'test-results.xml'
+    }
+
+    junit 'more-test-results.xml'
+
+    stage('Ignored') {
+      withChecks('Integration Tests') {
+        junit 'yet-more-test-results.xml'
+      }
+    }
+    
   }
   post {
     always {
