@@ -5,10 +5,16 @@ pipeline {
   // * JUnit: https://plugins.jenkins.io/junit/
   // * Claim: https://plugins.jenkins.io/claim/
   agent 'any'
+  
+  tools {
+    maven 'mvn-3.5.4
+    }
+  
   //options{
     //// This option allows broken builds to be claimed
     //allowBrokenBuildClaiming()
   //}
+  
   stages {
     stage('Checkout') {
       steps {
@@ -32,6 +38,7 @@ pipeline {
     always {
       // The testDataPublishers argument allows failed tests to be claimed
       junit(testDataPublishers: [[$class: 'ClaimTestDataPublisher']], testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)
+      pmd(canRunOnFailed: true,pattern: '**/target/pwd.xml')
     }
   }
 }
