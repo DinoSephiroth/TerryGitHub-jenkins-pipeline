@@ -36,7 +36,7 @@ pipeline {
   }
   post {
     always {
-      pmd(canRunOnFailed: true,pattern: '**/target/pwd.xml')
+      // pmd(canRunOnFailed: true,pattern: '**/target/pwd.xml')
       // The testDataPublishers argument allows failed tests to be claimed
       junit(testDataPublishers: [[$class: 'ClaimTestDataPublisher']], testResults: 'target/surefire-reports/*.xml', allowEmptyResults : true)      
     }
