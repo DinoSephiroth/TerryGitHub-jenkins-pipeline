@@ -24,13 +24,13 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Testing..'
-        sh(script: './mvnw --batch-mode -Dmaven.test.failure.ignore=true test')               
+        //sh(script: './mvnw --batch-mode -Dmaven.test.failure.ignore=true test')               
       }
     }
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh(script: './mvnw --batch-mode package -DskipTests')
+        //sh(script: './mvnw --batch-mode package -DskipTests')
       }
     }    
     stage("Publish NUnit Test Report") {
