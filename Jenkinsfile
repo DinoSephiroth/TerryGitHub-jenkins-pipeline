@@ -6,15 +6,6 @@ pipeline {
   // * Claim: https://plugins.jenkins.io/claim/
   agent 'any'
   
-  tools {
-    maven 'myMaven'
-    }
-  
-  //options{
-    //// This option allows broken builds to be claimed
-    //allowBrokenBuildClaiming()
-  //}
-  
   stages {
     stage('Build') {
       steps {
