@@ -5,6 +5,13 @@ pipeline {
   // * JUnit: https://plugins.jenkins.io/junit/
   // * Claim: https://plugins.jenkins.io/claim/
   agent 'any'
+  
+  // for Config File Provider 外掛程式
+  configFileProvider([configFile(fileId: 'maven-global-settings', 
+  variable: 'MAVEN_GLOBAL_ENV')]) {
+      sh "mvn -s $MAVEN_GLOBAL_ENV clean install"
+  }
+  
   tools {
       maven 'mvn3.5.4'
   }
