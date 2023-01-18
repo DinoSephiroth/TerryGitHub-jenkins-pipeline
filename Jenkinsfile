@@ -5,8 +5,17 @@ pipeline {
   // * JUnit: https://plugins.jenkins.io/junit/
   // * Claim: https://plugins.jenkins.io/claim/
   agent 'any'
+  tools {
+      maven 'mvn3.5.4'
+  }
   
   stages {
+    stage('Example') {
+      steps {
+        echo 'Example..'
+        sh 'mvn clean test install'
+      }
+    }
     stage('Build') {
       steps {
         echo 'Building..'
