@@ -4,23 +4,7 @@ pipeline {
   // * Workflow Aggregator: https://plugins.jenkins.io/workflow-aggregator/
   // * JUnit: https://plugins.jenkins.io/junit/
   // * Claim: https://plugins.jenkins.io/claim/
-  agent 'any'
-  
-  // for Config File Provider 程式
-  configFileProvider([configFile(fileId: 'maven-global-settings', 
-  variable: 'MAVEN_GLOBAL_ENV')]) {
-      sh "mvn -s $MAVEN_GLOBAL_ENV clean install"
-  }
-  
-  // for Pyenv Pipeline 程式
-  withPythonEnv('/usr/bin/python') {
-    sh 'python --version'
-  }
-  
-  tools {
-      maven 'mvn3.5.4'
-  }
-  
+  agent 'any'  
   stages {
     stage('Example') {
       steps {
@@ -51,6 +35,22 @@ pipeline {
         }
     }
   }
+  
+  // for Config File Provider 程式
+  configFileProvider([configFile(fileId: 'maven-global-settings', 
+  variable: 'MAVEN_GLOBAL_ENV')]) {
+      sh "mvn -s $MAVEN_GLOBAL_ENV clean install"
+  }
+  
+  // for Pyenv Pipeline 程式
+  withPythonEnv('/usr/bin/python') {
+    sh 'python --version'
+  }
+  
+  tools {
+      maven 'mvn3.5.4'
+  }
+  
   post {
           always{
                  junit testResults: "**/target/surefire-reports/*.xml"
