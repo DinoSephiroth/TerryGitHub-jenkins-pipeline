@@ -28,7 +28,6 @@ pipeline {
       steps {
         echo 'Deploying....'
         // sh 改為 bat !!
-        bat(script: './mvnw --batch-mode package -DskipTests')
       }
     }    
     stage("Publish NUnit Test Report") {
