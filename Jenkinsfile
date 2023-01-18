@@ -4,7 +4,7 @@ pipeline {
   // * Workflow Aggregator: https://plugins.jenkins.io/workflow-aggregator/
   // * JUnit: https://plugins.jenkins.io/junit/
   // * Claim: https://plugins.jenkins.io/claim/
-  agent 'any'  
+  agent any  
   stages {
     stage('Example') {
       steps {
@@ -60,11 +60,6 @@ pipeline {
                    includeProperties:false,jdk: '',
                    properties: [],reportBuildPolicy: 'ALWAYS',
                    results: [[path: 'target/allure-results']]
-                   ]}
-                 allure{[
-                   includeProperties:false,jdk: '',
-                   properties: [],reportBuildPolicy: 'ALWAYS',
-                   results: [[path: 'target/allure-result']]
                    ]}
                 }
          }
