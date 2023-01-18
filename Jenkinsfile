@@ -19,14 +19,15 @@ pipeline {
     }
     stage('Test') {
       steps {
-        echo 'Testing.. GitLab Trigger 04:45 !'
+        echo 'Testing.. GitLab Trigger 03:57 !'
         //sh(script: './mvnw --batch-mode -Dmaven.test.failure.ignore=true test')               
       }
     }
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh(script: './mvnw --batch-mode package -DskipTests')
+        // sh 改為 bat !!
+        bat(script: './mvnw --batch-mode package -DskipTests')
       }
     }    
     stage("Publish NUnit Test Report") {
@@ -39,12 +40,14 @@ pipeline {
   // for Config File Provider 程式
   // configFileProvider([configFile(fileId: 'maven-global-settings', 
   // variable: 'MAVEN_GLOBAL_ENV')]) {
-  //       sh "mvn -s $MAVEN_GLOBAL_ENV clean install"
+  //// sh 改為 bat !!
+  //       bat "mvn -s $MAVEN_GLOBAL_ENV clean install"
   // }
   
   // for Pyenv Pipeline 程式
   // withPythonEnv('/usr/bin/python') {
-  //   sh 'python --version'
+  //// sh 改為 bat !!
+  //   bat 'python --version'
   // }
   
   tools {
