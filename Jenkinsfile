@@ -37,15 +37,15 @@ pipeline {
   }
   
   // for Config File Provider 程式
-  configFileProvider([configFile(fileId: 'maven-global-settings', 
-  variable: 'MAVEN_GLOBAL_ENV')]) {
-      sh "mvn -s $MAVEN_GLOBAL_ENV clean install"
-  }
+  // configFileProvider([configFile(fileId: 'maven-global-settings', 
+  // variable: 'MAVEN_GLOBAL_ENV')]) {
+  //       sh "mvn -s $MAVEN_GLOBAL_ENV clean install"
+  // }
   
   // for Pyenv Pipeline 程式
-  withPythonEnv('/usr/bin/python') {
-    sh 'python --version'
-  }
+  // withPythonEnv('/usr/bin/python') {
+  //   sh 'python --version'
+  // }
   
   tools {
       maven 'mvn-3.5.4'
