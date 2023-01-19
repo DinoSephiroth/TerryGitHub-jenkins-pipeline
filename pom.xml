@@ -175,7 +175,9 @@
         </configuration>
         <executions>
           <execution>
-            <goals>check</goals>
+            <goals>
+              <goal>check</goal>
+            </goals>
           </execution>
         </executions>
         <dependencies>
