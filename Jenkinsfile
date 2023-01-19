@@ -56,6 +56,7 @@ pipeline {
   
   post {
           always{
+                 junit testResults: "**/target/junit-report/*.xml"
                  junit testResults: "**/target/surefire-reports/*.xml"
                  script{
                     allure{[ 
