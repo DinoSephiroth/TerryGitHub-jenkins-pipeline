@@ -5,7 +5,21 @@ pipeline {
   // * JUnit: https://plugins.jenkins.io/junit/
   // * Claim: https://plugins.jenkins.io/claim/
   agent any  
+    
+  tools {
+      maven 'mvn-3.5.4'
+  }
+  
   stages {
+    
+    stage('pmd') {
+      steps {
+        echo 'PMD..'
+        // sh 改為 bat !!
+        bat "mvn pmd:pmd"
+      }
+    }
+    
     stage('Example') {
       steps {
         echo 'Example..'
@@ -50,14 +64,13 @@ pipeline {
           //// sh 改為 bat !!
           //   bat 'python --version'
           // }
-  
-  tools {
-      maven 'mvn-3.5.4'
-  }
+
   
   post {
           always{
                  echo 'posting....'
+                 pmd(canRunOnFailed: true, pattern: '**/target/pmd.xml')
+            
                  junit testResults: "**/target/junit-report/junit-report.xml"
                  junit testResults: "**/target/surefire-reports/surefire-reports.xml"
             
