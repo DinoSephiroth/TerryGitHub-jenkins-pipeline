@@ -10,7 +10,7 @@ pipeline {
       steps {
         echo 'Example..'
         // sh 改為 bat !!
-        // bat 'mvn clean test install'
+        bat 'mvn clean test install'
       }
     }
     stage('Build') {
