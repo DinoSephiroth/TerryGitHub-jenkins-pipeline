@@ -70,11 +70,11 @@ pipeline {
           always{
                  echo 'posting....'
                  pmd(canRunOnFailed: true, pattern: '**/target/pmd.xml')
-            
-                 junit testResults: "**/target/junit-report/junit-report.xml"
-                 junit testResults: "**/target/surefire-reports/surefire-reports.xml"
-            
+                 junit skipPublishingChecks: true, testResults: 'test-results.xml'
                  script{ allure includeProperties: false, jdk: '', properties: [], reportBuildPolicy: 'ALWAYS', results: [[path: 'target/allure-results']] }
+            
+                 //junit testResults: "**/target/junit-report/junit-report.xml"
+                 //junit testResults: "**/target/surefire-reports/surefire-reports.xml"
                 }          
  
           
