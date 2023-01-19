@@ -30,11 +30,11 @@ pipeline {
         // sh 改為 bat !!
       }
     }    
-    stage("Publish NUnit Test Report") {
-      steps {
-        nunit testResultsPattern: 'TestResult.xml'
-        }
-    }
+    // stage("Publish NUnit Test Report") {
+    //   steps {
+    //     nunit testResultsPattern: 'TestResult.xml'
+    //     }
+    // }
   }
   
   // for Config File Provider 程式
