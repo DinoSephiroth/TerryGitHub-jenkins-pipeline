@@ -56,6 +56,7 @@ pipeline {
   
   post {
           always{
+                 echo 'posting....'
                  junit testResults: "**/target/junit-report/junit-report.xml"
                  junit testResults: "**/target/surefire-reports/surefire-reports.xml"
             
