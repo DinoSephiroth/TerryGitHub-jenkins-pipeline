@@ -35,6 +35,7 @@ pipeline {
    // sh 改為 bat !!
    configFileProvider([configFile(fileId: 'maven-global-settings', 
    variable: 'MAVEN_GLOBAL_ENV')]) { bat "mvn -s $MAVEN_GLOBAL_ENV clean install" }
+   echo 'Config File Provider 程式 ....'
     
             // stage("Publish NUnit Test Report") {
             //   steps {
