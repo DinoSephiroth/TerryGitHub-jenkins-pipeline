@@ -56,13 +56,10 @@ pipeline {
   
   post {
           always{
-                 junit testResults: "**/target/junit-report/*.xml"
-                 junit testResults: "**/target/surefire-reports/*.xml"
-                 script{
-                    allure{[ 
-                            includeProperties: false, jdk: '', properties: [], reportBuildPolicy: 'ALWAYS', results: [[path: 'target/allure-results']] 
-                          ]} 
-                      }
+                 junit testResults: "**/target/junit-report/junit-report.xml"
+                 junit testResults: "**/target/surefire-reports/surefire-reports.xml"
+            
+                 script{ allure includeProperties: false, jdk: '', properties: [], reportBuildPolicy: 'ALWAYS', results: [[path: 'target/allure-results']] }
                 }          
  
           
