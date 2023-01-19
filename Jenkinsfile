@@ -30,25 +30,25 @@ pipeline {
         // sh 改為 bat !!
       }
     }    
-    // stage("Publish NUnit Test Report") {
-    //   steps {
-    //     nunit testResultsPattern: 'TestResult.xml'
-    //     }
-    // }
-  }
+    
+   // for Config File Provider 程式
+   // sh 改為 bat !!
+   configFileProvider([configFile(fileId: 'maven-global-settings', 
+   variable: 'MAVEN_GLOBAL_ENV')]) { bat "mvn -s $MAVEN_GLOBAL_ENV clean install" }
+    
+            // stage("Publish NUnit Test Report") {
+            //   steps {
+            //     nunit testResultsPattern: 'TestResult.xml'
+            //     }
+            // }
+    
+  } // End of stages
   
-  // for Config File Provider 程式
-  // configFileProvider([configFile(fileId: 'maven-global-settings', 
-  // variable: 'MAVEN_GLOBAL_ENV')]) {
-  //// sh 改為 bat !!
-  //       bat "mvn -s $MAVEN_GLOBAL_ENV clean install"
-  // }
-  
-  // for Pyenv Pipeline 程式
-  // withPythonEnv('/usr/bin/python') {
-  //// sh 改為 bat !!
-  //   bat 'python --version'
-  // }
+          // for Pyenv Pipeline 程式
+          // withPythonEnv('/usr/bin/python') {
+          //// sh 改為 bat !!
+          //   bat 'python --version'
+          // }
   
   tools {
       maven 'mvn-3.5.4'
