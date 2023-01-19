@@ -45,6 +45,18 @@ pipeline {
       }
     }    
     
+    stage('Integration') {
+      junit 'test-results.xml'
+    }
+
+    junit 'more-test-results.xml'
+
+    stage('Ignored') {
+      withChecks('Integration Tests') {
+        junit 'yet-more-test-results.xml'
+      }
+    }
+    
    // for Config File Provider 程式
    // sh 改為 bat !!
    configFileProvider([configFile(fileId: 'maven-global-settings', 
